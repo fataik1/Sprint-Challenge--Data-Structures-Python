@@ -39,4 +39,20 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        current_node = node
+
+        # the loop will run til the next_node reaches the tail (None)
+        while current_node:
+            # I want to set the next_node to  a variable 
+            next_node = current_node.next_node
+            #now i will do the reversing. This will bring the current node to the head
+            current_node.next_node = prev
+            #Set previous to a variable so it can be used the next time through
+            # 1st node 1st time thru, 2nd node 2nd time thru, it'll repeat like this
+            prev = current_node
+            #now I'll update the current_node so the loop will run or exist if none
+            current_node = next_node
+
+        #update the head to be the last previous variable before the loop exits
+        self.head = prev
+
